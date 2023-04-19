@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ],
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "paths": {
+      "@model/*": ["dist/libs/mikro-orm-model/src/*"],
+      "@adapter/*": ["apps/api-internal/src/adapter/*"],
+      "@domain/*": ["apps/api-internal/src/domain/*"],
+      "@application/*": ["apps/api-internal/src/use-cases/*"],
+      "@infrastructure/*": ["apps/api-internal/src/infrastructure/*"],
+      "@class-validator/extend/*": ["utils/class-validator/src/*"],
+    }
+  },
+}
