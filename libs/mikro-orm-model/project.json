@@ -1,0 +1,66 @@
+{
+  "name": "mikro-orm-model",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/mikro-orm-model/src",
+  "projectType": "library",
+  "targets": {
+    "migrate:init": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx mikro-orm migration:create --initial",
+        "cwd": "libs/mikro-orm-model"
+      }
+    },
+    "migrate:create": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx mikro-orm migration:create",
+        "cwd": "libs/mikro-orm-model"
+      }
+    },
+    "migrate:up": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "npx mikro-orm migration:up",
+        "cwd": "libs/mikro-orm-model"
+      }
+    },
+    "migrate:down": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command":  "npx mikro-orm migration:down",
+        "cwd": "libs/mikro-orm-model"
+      }
+    },
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "main": "libs/mikro-orm-model/src/index.ts",
+        "tsConfig": "libs/mikro-orm-model/tsconfig.lib.json",
+        "outputPath": "dist/libs/mikro-orm-model"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/mikro-orm-model/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/mikro-orm-model/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
