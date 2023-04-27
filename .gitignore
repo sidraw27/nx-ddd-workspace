@@ -43,3 +43,6 @@ Thumbs.db
 
 # Storages
 db-data
+
+# Next.js
+.next
